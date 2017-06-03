@@ -122,7 +122,7 @@ void MemoryController::receiveFromBus(BusPacket *bpacket)
 
 	if (DEBUG_BUS)
 	{
-		PRINTN(" -- MC Receiving From Data Bus : ");
+		PRINTC(currentClockCycle, " -- MC Receiving From Data Bus : ");
 		bpacket->print();
 	}
 
@@ -237,7 +237,7 @@ void MemoryController::update()
 			//send to bus and print debug stuff
 			if (DEBUG_BUS)
 			{
-				PRINTN(" -- MC Issuing On Data Bus    : ");
+				PRINTC(currentClockCycle, " -- MC Issuing On Data Bus    : ");
 				writeDataToSend[0]->print();
 			}
 
@@ -474,7 +474,7 @@ void MemoryController::update()
 		//issue on bus and print debug
 		if (DEBUG_BUS)
 		{
-			PRINTN(" -- MC Issuing On Command Bus : ");
+			PRINTC(currentClockCycle, " -- MC Issuing On Command Bus : ");
 			poppedBusPacket->print();
 		}
 
@@ -509,7 +509,7 @@ void MemoryController::update()
 		{
 			if (DEBUG_ADDR_MAP) 
 			{
-				PRINTN("== New Transaction - Mapping Address [0x" << hex << transaction->address << dec << "]");
+				PRINTC(currentClockCycle, "== New Transaction - Mapping Address [0x" << hex << transaction->address << dec << "]");
 				if (transaction->transactionType == DATA_READ) 
 				{
 					PRINT(" (Read)");
@@ -663,7 +663,7 @@ void MemoryController::update()
 	{
 		if (DEBUG_BUS)
 		{
-			PRINTN(" -- MC Issuing to CPU bus : " << *returnTransaction[0]);
+			PRINTC(currentClockCycle, " -- MC Issuing to CPU bus : " << *returnTransaction[0]);
 		}
 		totalTransactions++;
 

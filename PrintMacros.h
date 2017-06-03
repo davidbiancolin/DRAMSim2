@@ -65,6 +65,7 @@ using std::ostream;
 	#else
 		#define PRINT(str)  if(SHOW_SIM_OUTPUT) { std::cout <<str<<std::endl; }
 		#define PRINTN(str) if(SHOW_SIM_OUTPUT) { std::cout <<str; }
+		#define PRINTC(cycle, str) if(SHOW_SIM_OUTPUT) { std::cout << "Cycle: " << cycle << " " << str; }
 	#endif
 #endif
 
